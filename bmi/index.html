@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculate Your BMI</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Calculate Your BMI">
+  <meta name="author" content="Thorsten Gomann">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Calculate Your BMI</h1>
+    <h2>Course Project - Shiny Application and Reproducible Pitch</h2>
+    <p>Thorsten Gomann<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>What is BMI?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The BMI means Body Mass Index. It is a unit to categorize an indiviual by the measurements weight and height with the formula</p>
+
+<p>\[BMI = \frac{kilogram}{meter^{2}}\]</p>
+
+<p>A common classification is defined as:</p>
+
+<table>
+<tr><th>BMI</th><th>category</th><tr>
+<tr><td>&lt; 18.5</td><td>underweight</td></tr>
+<tr><td>18.5 - 25.0</td><td>normal</td></tr>
+<tr><td>25.0 - 30.0</td><td>overweight</td></tr>
+<tr><td>&gt;30.0</td><td>obese</td></tr>
+</table>
+
+<p><br>There are also variations considering gender and age, and there are even countries with their own ranges.
+In this app the common classification is used.
+<br>For further details about BMI look here: <a href="https://en.wikipedia.org/wiki/Body_mass_index">https://en.wikipedia.org/wiki/Body_mass_index</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Imperial System (also known as British Imperial)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>While BMI is calculated based on metric measurements, the imperial units are also widely spread around the world.<br>
+To cope with it, this app have also the opportunity to calculate with imperial measurements. Therefore the imperial figures are converted to metric system by the factor 0.3048 for height and 0.45359237 for weight.<br>
+So for example 5.9 feet and 165 pound are converted:</p>
+
+<pre><code class="r">x &lt;- c(5.9, 165, 5.9*0.3048, 165*0.45359237, (165*0.45359237)/((5.9*0.3048)^2))
+names(x) &lt;- c(&quot;ft&quot;, &quot;lb&quot;, &quot;m&quot;, &quot;kg&quot;, &quot;BMI&quot;)
+x
+</code></pre>
+
+<pre><code>##        ft        lb         m        kg       BMI 
+##   5.90000 165.00000   1.79832  74.84274  23.14279
+</code></pre>
+
+<p>For further details look here: <a href="https://en.wikipedia.org/wiki/Imperial_units">https://en.wikipedia.org/wiki/Imperial_units</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Integration</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The Sidebarpanel contains a radio button to differ between metric and imperial units. The two measurements for height and weight are doubled in two conditional subpanels recalculating in realtime and keep last inputs - even metric system changes.</p>
+
+<p>The ranges for input won&#39;t cover any possibility, but I think for most it will be sufficient.</p>
+
+<p>The desired BMI offers values within the normal BMI range between 18.5 and 25.</p>
+
+<p>All changes are calculated in real time. The calculation is quick enough that there&#39;s no need for a reactive transaction.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The inputs are considered as 1.80 metres for height and 75 kilograms for weight. The calculated BMI is 23.1.</p>
+
+<p>Test your BMI in the provided App! Give it a try!</p>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='What is BMI?'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Imperial System (also known as British Imperial)'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Integration'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Example'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
